@@ -5,15 +5,14 @@
 
 <ng-template #content>
     <section class="form-02-main">
-        <div class="job-list-container " *ngIf="appList.length > 0; else noData">
-            <h2 class="job-title mt-3">Job Applications</h2>
+        <h2 class="job-title mt-3 p-2  " style="background:rgba(255,255,255,0.6);">Job Applications</h2>
+        <div class="job-list-container " *ngIf="appList && appList.length">
+
             <div class="row row-cols-1 row-cols-md-3 g-4">
 
                 <div class="col " *ngFor="let job of appList">
                     <div class="card h-100 form-03-main">
                         <div class="card-body">
-                            <h5 class="card-title ">Application/Job Name</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Company Name</h6>
                             <!-- <p class="card-text">{{job.jobDescription}}</p> -->
 
                             <p class="job-details"><strong>Application ID:</strong> {{ job.applicationId }}</p>
@@ -43,9 +42,13 @@
             </div>
 
         </div>
-        <ng-template #noData>
-            <p class="no-data">No application available.</p>
-        </ng-template>
+
+        <div *ngIf="!appList || appList.length === 0">
+            <div class="container  justify-content-center text-center mt-5">
+                <img class="mt-5" src="https://michassi.com/assets/web//images/no_data_found.png"
+                    style="margin-bottom: 250px;">
+            </div>
+        </div>
     </section>
 </ng-template>
 

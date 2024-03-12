@@ -21,13 +21,14 @@ export class ApplicationsComponent {
         this.appList = res["data"] as any[];
         console.log(this.appList)
         console.log("api response: " + res);
+        this.loading=false
       },
       error => {
         console.log(error.error);
+        this.loading=false
 
         // this.toastr.error(error+"Login success")
       }
-      ,()=>this.loading=false
     );
 }
   deleteApp(id:number){
@@ -41,7 +42,7 @@ export class ApplicationsComponent {
       error:err => {
         console.log(err);
         this.toastr.error("Delete Failed")
-      }
-    })
-  }
+      }
+    })
+  }
 }

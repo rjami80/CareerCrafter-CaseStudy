@@ -39,11 +39,12 @@ export class JoblistingsComponent {
         this.filterList=this.jobList;
         console.log(this.filterList)
         console.log("api response:" + res);
+        this.loading=false
       },
       error => {
         console.log(error);
+        this.loading=false
       }
-      ,()=>this.loading=false
     );
   }
   else{
@@ -53,11 +54,12 @@ export class JoblistingsComponent {
         this.filterList=this.jobList;
         console.log(this.filterList)
         console.log("api response: " + res);
+        this.loading=false
       },
       error => {
         console.log(error);
+        this.loading=false
       }
-      ,()=>this.loading=false
     );
   }
 }
@@ -122,6 +124,6 @@ deletelistings(id:number){
   this.filterList=this.jobList.filter((l)=>l.jobTitle.toLowerCase().includes(this.searchQuery.toLowerCase())||l.companyName.toLowerCase().includes(this.searchQuery.toLowerCase())||l.location.toLowerCase().includes(this.searchQuery.toLowerCase())||l.jobDescription.toLowerCase().includes(this.searchQuery.toLowerCase()))
   console.log(this.filterList)
   console.log(this.searchQuery)
- }
- 
+ }
+ 
 }
