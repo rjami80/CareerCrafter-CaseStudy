@@ -1,0 +1,57 @@
+<div *ngIf="loading; else content" class="loading-container">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+</div>
+
+<ng-template #content>
+    <section class="form-02-main">
+        <div class="job-list-container " *ngIf="appList.length > 0; else noData">
+            <h2 class="job-title mt-3">Job Applications</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                <div class="col " *ngFor="let job of appList">
+                    <div class="card h-100 form-03-main">
+                        <div class="card-body">
+                            <h5 class="card-title ">Application/Job Name</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Company Name</h6>
+                            <!-- <p class="card-text">{{job.jobDescription}}</p> -->
+
+                            <p class="job-details"><strong>Application ID:</strong> {{ job.applicationId }}</p>
+                            <p class="job-details"><strong>Listing ID:</strong> {{ job.listingId }}</p>
+                            <p class="job-details"><strong>JobSeeker ID:</strong> {{ job.jobSeekerId }}</p>
+                            <p class="job-details"><strong>Application Date:</strong> {{ job.applicationDate | date }}
+                            </p>
+                            <p class="job-details"><strong>Application Status:</strong> {{ job.applicationStatus }}</p>
+                            <hr>
+                            <div class="container text-center mt-3">
+                                <div class="row">
+                                    <div class="col">
+                                    </div>
+
+                                    <div class="col">
+                                    </div>
+
+                                    <div class="col">
+                                        <button class="btn btn-danger"
+                                            (click)="deleteApp(job.applicationId)">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <ng-template #noData>
+            <p class="no-data">No application available.</p>
+        </ng-template>
+    </section>
+</ng-template>
+
+
+
+
+<div class="container">
+
+</div>
